@@ -1,6 +1,15 @@
 ---
 - hosts: all
   tasks:
+  - name: Create data container
+    docker_container:
+      name: my_jenkins_data
+      image: busybox
+      state: present
+      user: "jenkins"
+      volumes:
+       - "/var/jenkins_home"
+
   - name: Create jenkins container
     docker_container:
       name: my_jenkins
@@ -9,3 +18,8 @@
       ports:
        - "8080:8080"
        - "50000:50000"
+      restart_policy: always
+      volumes:
+        - "/jenkins_volume:/var/jenkins_home"
+      # volumes_from:
+      #  - my_jenkins_data

@@ -1,2 +1,2 @@
 [test]
-<IP> ansible_connection=ssh
+104.197.147.251 ansible_connection=ssh
