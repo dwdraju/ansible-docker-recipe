@@ -1,0 +1,2 @@
+[test]
+<IP> ansible_connection=ssh

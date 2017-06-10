@@ -1,0 +1,11 @@
+---
+- hosts: all
+  tasks:
+  - name: Create jenkins container
+    docker_container:
+      name: my_jenkins
+      image: jenkins
+      state: started
+      ports:
+       - "8080:8080"
+       - "50000:50000"
